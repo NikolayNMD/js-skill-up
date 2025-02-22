@@ -1,0 +1,11 @@
+@import url("./reset.css");
+@import url("./variables.css");
+
+.task_manager_container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+.main_tittle {
+  margin-bottom: 20px;
+}
