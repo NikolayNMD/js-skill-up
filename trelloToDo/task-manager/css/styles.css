@@ -2,10 +2,142 @@
 @import url("./variables.css");
 
 .task_manager_container {
-  display: flex;
-  justify-content: center;
   padding: 20px 0;
+  background-color: teal;
+  border: 2px solid orange;
+  border-radius: 10px;
 }
 .main_tittle {
+  text-align: center;
   margin-bottom: 20px;
+  color: white;
+}
+
+.create_button {
+  display: block;
+  margin: 0 auto;
+  padding: 5px;
+  font-size: 16px;
+  background-color: white;
+  border: 1px solid orange;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.create_button:hover {
+  background-color: orange;
+  border: 1px solid white;
+  color: white;
+}
+
+.task_variation_container {
+  display: flex;
+  margin: 0 10px;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid orange;
+  border-radius: 10px;
+  gap: 5px;
+}
+
+.column {
+  position: relative;
+  width: 100%;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.column h2 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.column.new {
+  background-color: coral;
+}
+
+.column.in_progress {
+  background-color: goldenrod;
+}
+
+.column.completed {
+  background-color: darkseagreen;
+}
+
+.sort_buttons {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+}
+
+.sort_buttons button {
+  padding: 5px;
+  font-size: 10px;
+  background-color: white;
+  border: 1px solid orange;
+  border-radius: 10px;
+  text-align: center;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sort_buttons button:hover {
+  background-color: orange;
+  border: 1px solid white;
+  color: white;
+}
+
+.task_list {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 10px;
+  width: 100%;
+}
+
+.task {
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: grab;
+}
+
+.task[priority="високий"] {
+  border-left: 5px solid red;
+}
+
+.task[priority="середній"] {
+  border-left: 5px solid gold;
+}
+
+.task[priority="низький"] {
+  border-left: 5px solid green;
+}
+
+.task:hover {
+  transform: scale(1.02);
+}
+
+.task strong {
+  margin-bottom: 10px;
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task p {
+  font-size: 14px;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
 }

@@ -17,6 +17,46 @@
     <div class="container">
       <div class="task_manager_container">
         <h1 class="main_tittle">Task Manager</h1>
+        <button class="create_button">Створити завдання</button>
+        <div class="task_variation_container">
+          <div class="column new">
+            <h2>Нові</h2>
+            <div class="sort_buttons">
+              <button>Високий</button>
+              <button>Низький</button>
+            </div>
+            <!-- <div class="task-list"></div> -->
+          </div>
+          <div class="column in_progress">
+            <h2>У процесі</h2>
+            <div class="sort_buttons">
+              <button>Високий</button>
+              <button>Низький</button>
+            </div>
+            <!-- <div class="task_list"></div> -->
+          </div>
+          <div class="column completed">
+            <h2>Виконано</h2>
+            <div class="sort_buttons">
+              <button>Високий</button>
+              <button>Низький</button>
+            </div>
+            <div class="task_list">
+              <div class="task" draggable="true" priority="високий">
+                <strong>Зробити їсти</strong>
+                <p>Хочу їсти вареники.</p>
+              </div>
+              <div class="task" draggable="true" priority="середній">
+                <strong>Зробити їсти</strong>
+                <p>Хочу їсти вареники.</p>
+              </div>
+              <div class="task" draggable="true" priority="низький">
+                <strong>Зробити їсти</strong>
+                <p>Хочу їсти вареники.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script src="task-manager.js"></script>
