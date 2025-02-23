@@ -17,46 +17,59 @@
     <div class="container">
       <div class="task_manager_container">
         <h1 class="main_tittle">Task Manager</h1>
-        <button class="create_button">Створити завдання</button>
+        <button class="create_button" onclick="openCreateModal()">
+          Створити завдання
+        </button>
         <div class="task_variation_container">
           <div class="column new">
             <h2>Нові</h2>
             <div class="sort_buttons">
-              <button>Високий</button>
-              <button>Низький</button>
+              <button onclick="sortTasks('нова', 'asc')">Високий</button>
+              <button onclick="sortTasks('нова', 'desc')">Низький</button>
             </div>
-            <!-- <div class="task-list"></div> -->
+            <div class="task_list" status="нова"></div>
           </div>
           <div class="column in_progress">
             <h2>У процесі</h2>
             <div class="sort_buttons">
-              <button>Високий</button>
-              <button>Низький</button>
+              <button onclick="sortTasks('нова', 'asc')">Високий</button>
+              <button onclick="sortTasks('нова', 'desc')">Низький</button>
             </div>
-            <!-- <div class="task_list"></div> -->
+            <div class="task_list" status="в процесі"></div>
           </div>
           <div class="column completed">
             <h2>Виконано</h2>
             <div class="sort_buttons">
-              <button>Високий</button>
-              <button>Низький</button>
+              <button onclick="sortTasks('нова', 'asc')">Високий</button>
+              <button onclick="sortTasks('нова', 'desc')">Низький</button>
             </div>
-            <div class="task_list">
-              <div class="task" draggable="true" priority="високий">
-                <strong>Зробити їсти</strong>
-                <p>Хочу їсти вареники.</p>
-              </div>
-              <div class="task" draggable="true" priority="середній">
-                <strong>Зробити їсти</strong>
-                <p>Хочу їсти вареники.</p>
-              </div>
-              <div class="task" draggable="true" priority="низький">
-                <strong>Зробити їсти</strong>
-                <p>Хочу їсти вареники.</p>
-              </div>
-            </div>
+            <div class="task_list" status="завершено"></div>
           </div>
         </div>
+      </div>
+      <div class="modal_backdrop is-hidden"></div>
+      <div class="modal_create is-hidden">
+        <h3>Створити нове завдання</h3>
+        <form>
+          <label>Назва завдання</label>
+          <input type="text" class="create_title" required />
+          <label>Опис завдання</label>
+          <textarea class="create_description"></textarea>
+          <label>Пріоритет</label>
+          <select class="create_priority">
+            <option value="високий">Високий</option>
+            <option value="середній">Середній</option>
+            <option value="низький">Низький</option>
+          </select>
+          <div>
+            <button type="button" class="save" onclick="createTask()">
+              Створити
+            </button>
+            <button type="button" class="cancel" onclick="closeCreateModal()">
+              Скасувати
+            </button>
+          </div>
+        </form>
       </div>
     </div>
     <script src="task-manager.js"></script>
