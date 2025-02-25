@@ -243,11 +243,13 @@
   margin-right: 20px;
 }
 
-.create:disabled {
+.create:disabled,
+.save:disabled {
   cursor: not-allowed;
 }
 
-.create:disabled:hover {
+.create:disabled:hover,
+.save:disabled:hover {
   padding: 5px;
   font-size: 10px;
   background-color: white;
