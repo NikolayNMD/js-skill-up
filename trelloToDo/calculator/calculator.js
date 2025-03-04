@@ -1,10 +1,16 @@
 const entries = JSON.parse(localStorage.getItem("entries")) || [];
 
 function addEntry() {
-  const amount = document.querySelector(".amount").value;
-  const category = document.querySelector(".category").value;
-  const date = document.querySelector(".date").value;
-  const type = document.querySelector(".type_of_action").value;
+  const amountInput = document.querySelector(".amount");
+  const categoryInput = document.querySelector(".category");
+  const dateInput = document.querySelector(".date");
+  const typeInput = document.querySelector(".type_of_action");
+  console.log(typeInput);
+
+  const amount = amountInput.value;
+  const category = categoryInput.value;
+  const date = dateInput.value;
+  const type = typeInput.value;
 
   if (!amount || !category || !date) {
     alert("Заповніть всі поля!");
@@ -20,6 +26,11 @@ function addEntry() {
   entries.push(entry);
   localStorage.setItem("entries", JSON.stringify(entries));
   renderCalendar();
+
+  amountInput.value = "";
+  categoryInput.value = "";
+  dateInput.value = new Date().toISOString().split("T")[0];
+  typeInput.value = "plus_money";
 }
 
 function renderCalendar() {
@@ -36,7 +47,7 @@ function renderCalendar() {
                          <button class="delete_btn" onclick="deleteEntry(${index})">🗑️</button>`;
     historyDiv.appendChild(div);
 
-    balance += entry.type === "income" ? entry.amount : -entry.amount;
+    balance += entry.type === "plus_money" ? entry.amount : -entry.amount;
   });
 
   document.querySelector(".balance span").textContent = balance;

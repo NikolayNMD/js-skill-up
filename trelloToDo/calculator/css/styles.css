@@ -73,6 +73,8 @@
   gap: 10px;
   width: 100%;
   min-height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .history_of_budget_container div {
@@ -80,6 +82,14 @@
   justify-content: space-between;
   padding: 5px 0;
   border-bottom: 2px solid black;
+}
+
+.history_of_budget_container .entry.plus_money {
+  background-color: rgba(0, 128, 0, 0.29);
+}
+
+.history_of_budget_container .entry.minus_money {
+  background-color: rgba(255, 127, 80, 0.485);
 }
 
 .delete_btn {
