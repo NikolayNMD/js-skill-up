@@ -97,6 +97,8 @@
   gap: 10px;
   width: 100%;
   min-height: 390px;
+  max-height: 390px;
+  overflow-y: auto;
 }
 
 .empty_message {

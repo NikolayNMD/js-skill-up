@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калькулятор бюджету</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.css"
+      integrity="sha512-gnAN+RgTMylunXI7AMg+PtcUGpKZFkZJoFIkAWvdPFRrFJz3p2tx4+9xbjILRfN7CzoViMgS8vSf06fSQzWZjA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="calculator_container">
+        <h1 class="calculator_tittle">Калькулятор бюджету</h1>
+        <p class="balance">Баланс: <span></span> грн.</p>
+
+        <div class="inputs_container">
+          <input type="number" class="amount" placeholder="Сума" />
+          <input type="text" class="category" placeholder="Категорія" />
+          <input type="date" class="date" />
+          <select class="type_of_action">
+            <option value="plus_money">Дохід</option>
+            <option value="minus_money">Витрата</option>
+          </select>
+          <button class="add_btn" onclick="addEntry()">Додати</button>
+        </div>
+
+        <div class="history_of_budget_container"></div>
+      </div>
+    </div>
+    <script src="calculator.js"></script>
+  </body>
+</html>
