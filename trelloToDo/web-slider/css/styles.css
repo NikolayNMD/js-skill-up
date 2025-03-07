@@ -1,0 +1,72 @@
+@import url("./reset.css");
+@import url("./variables.css");
+
+.slider_container {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+}
+
+.slider {
+  display: flex;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 400px;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.prev_slide,
+.next_slide {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.prev_slide {
+  left: -50px;
+}
+.next_slide {
+  right: -50px;
+}
+
+.prev_slide:hover,
+.next_slide:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: gray;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: black;
+}
