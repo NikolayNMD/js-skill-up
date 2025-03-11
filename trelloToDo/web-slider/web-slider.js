@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const BASE_URL = "https://pixabay.com/api/";
   const API_KEY = "40601528-eb3806a59487c1013e43987dd";
-  const query = "Україна";
+  let query = "Dog";
   const page = 1;
   const perPage = 10;
   const autoSlideInterval = 3000;
@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const prevBtn = document.querySelector(".prev_slide");
   const nextBtn = document.querySelector(".next_slide");
   const dotsContainer = document.querySelector(".dots");
+  const searchInput = document.querySelector(".search_input");
+  const searchButton = document.querySelector(".search_button");
 
   let images = [];
   let currentIndex = 0;
@@ -33,7 +35,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
+  function showToast(message) {
+    const toast = document.createElement("div");
+    toast.classList.add("toast");
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      toast.classList.add("fade-out");
+      setTimeout(() => {
+        toast.remove();
+      }, 500);
+    }, 2500);
+  }
+
   function renderSlider() {
+    if (!slider || !dotsContainer) return;
+    document.querySelectorAll(".slide").forEach((slide, index) => {
+      slide.classList.toggle("active", index === currentIndex);
+    });
+    document.querySelectorAll(".dot").forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentIndex);
+    });
+  }
+
+  function createSlider() {
     slider.innerHTML = "";
     dotsContainer.innerHTML = "";
 
@@ -60,6 +86,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       dotsContainer.appendChild(dot);
     });
+    slider.style.display = "flex";
+    nextBtn.style.display = "flex";
+    prevBtn.style.display = "flex";
   }
 
   function showSlide(index) {
@@ -99,9 +128,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     startAutoSlide();
   });
 
+  searchButton.addEventListener("click", async () => {
+    query = searchInput.value.trim();
+    if (query) {
+      images = await fetchImages(query, page, perPage);
+      stopAutoSlide();
+      if (images.length > 0) {
+        currentIndex = 0;
+        createSlider();
+        startAutoSlide();
+        searchInput.value = "";
+        showToast("Насолоджуйтесь зображеннями:)");
+      } else {
+        dotsContainer.innerHTML = "";
+        slider.style.display = "none";
+        prevBtn.style.display = "none";
+        nextBtn.style.display = "none";
+        showToast("Зображень не знайдено. Спробуйте інший запит.");
+      }
+    }
+  });
+
   images = await fetchImages(query, page, perPage);
   if (images.length > 0) {
-    renderSlider();
+    createSlider();
     startAutoSlide();
   }
 });
